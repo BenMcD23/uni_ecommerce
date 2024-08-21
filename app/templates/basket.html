@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="tableContainer">
+    <h1>Basket</h1>
+    <!-- table for basket -->
+      <table class="tableStyling">
+        <thead>
+          <tr>
+            <th scope="col">Item Name</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Individual Item Cost</th>
+            <th scope="col">Total Cost</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <!-- loops through all incomes and creates the row -->
+        <tbody>
+          {% for i in range(0, totalNumOfRows) %}
+          <tr>
+            <td>{{ basket[i].name }}</td>
+            <td>{{ basket[i].quantity }}</td>
+            <td>£{{ basket[i].cost }}</td>
+            <td>£{{ costPerItem[i] }}</td>
+            <!-- passing id to javascript functions so can post to python so can delete from database using id-->
+            <td><button class="tableButton" onclick="deleteBasketItem({{ basket[i].id }}, '{{ basket[i].name }}')">Delete</button></td>
+          </tr>
+          {% endfor %}
+
+        </tbody>
+        <thead>
+            <tr>
+              <th scope="col">Item Name</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Individual Item Cost</th>
+              <th scope="col">Total Cost: £{{ totalCost }}</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+      </table>
+</div>
+
+<div class="checkout">
+  <button class="button" onclick="checkout({{ totalNumOfRows }})">Checkout</button>
+</div>
+
+
+
+{% endblock %}

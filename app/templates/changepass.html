@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="accountCentered">
+    <img src="{{url_for('static', filename='logo.png')}}" alt="Shoppable logo" class="imageResponsive"/>
+</div>
+
+<!-- form for changing pass -->
+<div class="form">
+    <form method="post" action="" name="changePass">
+        {{ changePassForm.hidden_tag() }}
+        <label for="currentPassword">Current Password</label>
+        {% if changePassForm.currentPassword.errors %}
+        {{ changePassForm.currentPassword(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+            {% for error in changePassForm.currentPassword.errors %}
+                <span>• {{ error }}</span>
+                <br>
+            {% endfor %}
+        </div>
+        {% else %}
+        {{ changePassForm.currentPassword(class="form-control", placeholder="6-25 characters + at least 1 letter and 1 number") }}
+        {% endif %}
+
+        <label for="newPassword">New Password</label>
+        {% if changePassForm.newPassword.errors %}
+        {{ changePassForm.newPassword(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+            {% for error in changePassForm.newPassword.errors %}
+                <span>• {{ error }}</span>
+                <br>
+            {% endfor %}
+        </div>
+        {% else %}
+        {{ changePassForm.newPassword(class="form-control", placeholder="6-25 characters + at least 1 letter and 1 number") }}
+        {% endif %}
+
+
+        <label for="newPasswordValidate">Re-enter New Password</label>
+
+        {% if changePassForm.newPasswordValidate.errors %}
+        {{ changePassForm.newPasswordValidate(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+            {% for error in changePassForm.newPasswordValidate.errors %}
+                <span>• {{ error }}</span>
+                <br>
+            {% endfor %}
+        </div>
+        {% else %}
+        {{ changePassForm.newPasswordValidate(class="form-control")}}
+        {% endif %}
+
+        <div class="formButton">
+            {{ changePassForm.submitPass }}
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="tableContainer">
+  <!-- if no addresses say add address -->
+  {% if numAddresses == 0 %}
+  <h1>Please Add An Address To Checkout</h1>
+  {% else %}
+  <h1>Select The Address For The Order To Be Delivered To</h1>
+  <!-- table for addresses -->
+    <table class="tableStyling">
+      <thead>
+        <tr>
+          <th scope="col">House Number/Name</th>
+          <th scope="col">Street</th>
+          <th scope="col">Town</th>
+          <th scope="col">Postcode</th>
+          <th scope="col">Select Address</th>
+        </tr>
+      </thead>
+      <!-- loops through all addresses -->
+      <tbody>
+        {% for i in addresses %}
+        <tr>
+          <td>{{ i.houseNumName }}</td>
+          <td>{{ i.street }}</td>
+          <td>{{ i.town }}</td>
+          <td>{{ i.postcode }}</td>
+          <!-- button to delete -->
+          <!-- passing id to javascript functions so can post to python so can use that address-->
+          <td><button class="tableButton" onclick="checkoutAddress({{ i.id }})">Select</button></td>
+        </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+</div>
+{% endif %}
+
+
+
+{% endblock %}

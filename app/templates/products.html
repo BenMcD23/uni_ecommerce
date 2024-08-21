@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- images in order left to right -->
+<!-- image from https://www.amazon.co.uk/AMD-Ryzen-5800X-Processor-Cache/dp/B0815XFSGK/ref=sr_1_3?crid=6X1KP2E9ZXP9&keywords=processor&qid=1700765744&sprefix=procc%2Caps%2C83&sr=8-3&th=1 -->
+<!-- image from https://www.amazon.co.uk/Intel-Core13th-i7-13700-Processor-Graphics/dp/B0BJ92P6NP/ref=sr_1_15?crid=6X1KP2E9ZXP9&keywords=processor&qid=1700766285&sprefix=procc%2Caps%2C83&sr=8-15 -->
+<!-- image from https://www.amazon.co.uk/Gigabyte-NVIDIA-GeForce-EAGLE-Graphics/dp/B0C8ZRMDC3/ref=sr_1_4?crid=520XHMX9I64P&keywords=gpu&qid=1700765755&sprefix=gpu%2Caps%2C95&sr=8-4 -->
+<!-- image from https://www.amazon.co.uk/Seagate-BarraCuda-Internal-Drive-Cache/dp/B07H2RR55Q/ref=sr_1_4?crid=J8NSOATUQG7I&keywords=pc%2Bparts&qid=1700765692&sprefix=pc%2Bparts%2Caps%2C78&sr=8-4&th=1 -->
+<!-- image from https://www.amazon.co.uk/Corsair-Non-Modular-Continuous-Low-Noise-Sleeving/dp/B08YK4ZQ54/ref=sr_1_6?crid=J8NSOATUQG7I&keywords=pc%2Bparts&qid=1700765692&sprefix=pc%2Bparts%2Caps%2C78&sr=8-6&th=1 -->
+<!-- image from https://www.amazon.co.uk/Corsair-Vengeance-Enthusiast-Illuminated-Memory/dp/B07D1XCKWW/ref=sr_1_9?crid=J8NSOATUQG7I&keywords=pc%2Bparts&qid=1700765692&sprefix=pc%2Bparts%2Caps%2C78&sr=8-9&th=1 -->
+<!-- image from https://www.amazon.co.uk/ASUS-Vivobook-X1500EA-i5-1135G7-Windows/dp/B0CCVCH2X8?ref_=Oct_d_omwf_d_340831031_1&pd_rd_w=EeG2X&content-id=amzn1.sym.5458a655-b549-4822-b8e4-401b8a0252b5&pf_rd_p=5458a655-b549-4822-b8e4-401b8a0252b5&pf_rd_r=41PQPPD75TRGW986DSK2&pd_rd_wg=j65jl&pd_rd_r=9c8ca99b-b90e-43f7-b46f-c077618bdd10&pd_rd_i=B0CCVCH2X8&th=1 -->
+<!-- image from https://www.amazon.co.uk/Samsung-Android-Version-Manufacturer-Warranty/dp/B0BD4XHGQN?ref_=Oct_d_omwf_d_340831031_7&pd_rd_w=EeG2X&content-id=amzn1.sym.5458a655-b549-4822-b8e4-401b8a0252b5&pf_rd_p=5458a655-b549-4822-b8e4-401b8a0252b5&pf_rd_r=41PQPPD75TRGW986DSK2&pd_rd_wg=j65jl&pd_rd_r=9c8ca99b-b90e-43f7-b46f-c077618bdd10&pd_rd_i=B0BD4XHGQN&th=1 -->
+<!-- image from https://www.amazon.co.uk/HP-DeskJet-Colour-Printer-Instant/dp/B09315ZKWT?ref_=Oct_d_omwf_d_340831031_3&pd_rd_w=EeG2X&content-id=amzn1.sym.5458a655-b549-4822-b8e4-401b8a0252b5&pf_rd_p=5458a655-b549-4822-b8e4-401b8a0252b5&pf_rd_r=41PQPPD75TRGW986DSK2&pd_rd_wg=j65jl&pd_rd_r=9c8ca99b-b90e-43f7-b46f-c077618bdd10&pd_rd_i=B09315ZKWT&th=1 -->
+<!-- image from https://www.amazon.co.uk/ASUS-Touchscreen-ScreenPad-i7-1195G7-Certified/dp/B0BN925W4R/ref=sr_1_5?crid=10FTCOKSRMTNP&keywords=asus&qid=1701371815&sprefix=asus%2Caps%2C91&sr=8-5&ufe=app_do%3Aamzn1.fos.16386313-b7bf-4b29-bfa1-0d3d5f3a0dd5&th=1 -->
+
+<!-- if there are no rows, then no products -->
+{% if numOfRows == 0 %}
+    <div class="centeredContainer">
+        <h1>There are no products for sale at the moment <br> Please check in at another time </h1>
+    </div>
+{% else %}
+<!-- otherwise show the search box -->
+    <div class="form">
+        <form method="post" action="" name="searchProducts">
+            {{ searchProductsForm.hidden_tag() }}
+
+            <label for="email">Search Products by Tags</label>
+
+            {% if searchProductsForm.productTag.errors %}
+            {{ searchProductsForm.productTag(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+                {% for error in searchProductsForm.productTag.errors %}
+                    <span>• {{ error }}</span>
+                    <br>
+                {% endfor %}
+            </div>
+            {% else %}
+            {{ searchProductsForm.productTag(class="form-control", placeholder="Search Products") }}
+            {% endif %}
+
+            <div class="formButton">
+                {{ searchProductsForm.submitSearch }}
+            </div>
+        </form>
+    </div>
+
+    <div class="productsContainer">
+        <!-- loop for how many rows there are -->
+        {% for i in range(0, numOfRows) %} 
+            <div class="row">
+                <!-- loop between number of items for that row -->
+                {% for j in range(productsRows[i], productsRows[i+1]) %} 
+                    <div class="col-md productsRow">
+                        <h3>{{ products[j].name }}</h3>
+                        <img src="{{ url_for('static', filename=products[j].imageName) }}" alt="{{ products[j].imageAlt }}" class="imageResponsive productsImage"/>
+                        <!-- makes it so button is below image when resizing -->
+                        <br>
+                        <h5>{{ products[j].quantity }} left in stock</h5>
+                        <h4>£{{ products[j].cost }}</h4>
+                        <button class="button" onclick="addToBasket({{ products[j].id }}, '{{ products[j].name }}', {{ products[j].cost }})">Add to Basket</button>
+                    </div>
+                {% endfor %}
+
+            </div>
+        {% endfor %}
+    </div>
+
+{% endif %}
+
+
+{% endblock %}

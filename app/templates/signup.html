@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- logo -->
+<div class="accountCentered">
+    <img src="{{url_for('static', filename='logo.png')}}" alt="Shoppable logo" class="imageResponsive"/>
+</div>
+
+<!-- form for singing up -->
+<div class="form">
+    <form method="post" action="" name="singup">
+        {{ signupForm.hidden_tag() }}
+        <label for="firstName">First Name</label>
+        {{ signupForm.firstName(class="form-control", placeholder="Enter Your First Name") }}
+        <label for="lastName">Last Name</label>
+        {{ signupForm.lastName(class="form-control", placeholder="Enter Your Last Name") }}
+        
+        <label for="email">Email</label>
+        {% if signupForm.email.errors %}
+        {{ signupForm.email(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+            {% for error in signupForm.email.errors %}
+                <span>• {{ error }}</span>
+                <br>
+            {% endfor %}
+        </div>
+        {% else %}
+        {{ signupForm.email(class="form-control", placeholder="Enter Your Email") }}
+        {% endif %}
+
+        <label for="password">Password</label>
+        {% if signupForm.password.errors %}
+        {{ signupForm.password(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+            {% for error in signupForm.password.errors %}
+                <span>• {{ error }}</span>
+                <br>
+            {% endfor %}
+        </div>
+        {% else %}
+        {{ signupForm.password(class="form-control", placeholder="6-25 characters + at least 1 letter and 1 number") }}
+        {% endif %}
+
+
+        <label for="passwordValidate">Re-enter Password</label>
+
+        {% if signupForm.passwordValidate.errors %}
+        {{ signupForm.passwordValidate(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+            {% for error in signupForm.passwordValidate.errors %}
+                <span>• {{ error }}</span>
+                <br>
+            {% endfor %}
+        </div>
+        {% else %}
+        {{ signupForm.passwordValidate(class="form-control")}}
+        {% endif %}
+
+        <div class="formButton">
+            {{ signupForm.createAccount }}
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+

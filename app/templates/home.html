@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="homeContainer">
+    <!-- side by side -->
+    <div class="row">
+        <div class="col-md homeText">
+            <h1>Shoppable<br>All your Tech needs</h1>
+        </div>
+        <div class="col-md">
+            <!-- Link for image - https://www.clipartmax.com/middle/m2i8A0m2K9G6N4b1_technology-clipart-transparent-background-technology-icon-transparent-background/ -->
+            <img src="{{url_for('static', filename='tech.png')}}" alt="Tech image" class="imageResponsive"/>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

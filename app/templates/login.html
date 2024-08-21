@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="accountCentered">
+    <img src="{{url_for('static', filename='logo.png')}}" alt="Shoppable logo" class="imageResponsive"/>
+</div>
+<!-- form for logging in -->
+<div class="form">
+    <form method="post" action="" name="login">
+        {{ loginForm.hidden_tag() }}
+        <label for="email">Email</label>
+        {% if loginForm.email.errors %}
+        {{ loginForm.email(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+            {% for error in loginForm.email.errors %}
+                <span>• {{ error }}</span>
+                <br>
+            {% endfor %}
+        </div>
+        {% else %}
+        {{ loginForm.email(class="form-control", placeholder="Enter Your Email") }}
+        {% endif %}
+
+        <label for="password">Password</label>
+        {% if loginForm.password.errors %}
+        {{ loginForm.password(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+            {% for error in loginForm.password.errors %}
+                <span>• {{ error }}</span>
+                <br>
+            {% endfor %}
+        </div>
+        {% else %}
+        {{ loginForm.password(class="form-control", placeholder="6-25 characters + at least 1 letter and 1 number") }}
+        {% endif %}
+
+        <div class="formButton">
+            {{ loginForm.submitLogin }}
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+

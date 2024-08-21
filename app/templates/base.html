@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <!-- Sets title of page -->
+    {% if title %}
+      <title>{{ title }}</title>
+      {% else %}
+      <title> No title specified</title>
+    {% endif %}
+    <!-- language -->
+    <html lang="en">
+    <!-- jqeury -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>  -->
+    <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
+    <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <!-- scripts -->
+    <script src="static/scripts.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="static/stylesheet.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+
+  </head>
+
+  <header>
+    <!-- All pages nav bar -->
+    <div class="topnav">
+      <nav class="navbar navbar-expand-lg navbar-inverse navbar-fixed-top">
+          <div class="container-fluid">
+              <a class="navbar-brand">
+                  <img src="{{url_for('static', filename='icon.png')}}" height="28" alt="Shoppable logo">
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarCollapse">
+                  <div class="navbar-nav">
+                      <a {% if title == "Home" %} class="active" {% else %} class="" {% endif %} href="/">Home</a>
+                      <a {% if title == "Products" %} class="active" {% else %} class="" {% endif %} href="/products">Products</a>
+                  </div>
+                  <div class="navbar-nav ms-auto">
+                    <li class="navbar-nav dropdown">
+                      <a {% if title == "Signup" or title == "Login" or title == "Your Account" or title == "Orders" or title == "Addresses" or title == "Change Password" %} class="active nav-link dropdown-toggle" {% else %} class="nav-link dropdown-toggle" {% endif %} href="#" role="button" data-bs-toggle="dropdown"><img src="{{url_for('static', filename='profile.png')}}" alt="Profile icon image" class="imageResponsive navbarIcon"/></a>
+                      <ul class="dropdown-menu">
+                        <a {% if title == "Your Account" %} class="active" {% else %} class="" {% endif %} href="/account">Your Account</a>
+                        <a {% if title == "Signup" %} class="active" {% else %} class="" {% endif %} href="/signup">Signup</a>
+                        <a {% if title == "Login" %} class="active" {% else %} class="" {% endif %} href="/login">Login</a>
+                        <a href="{{url_for('logout')}}">Logout</a>
+                        
+
+                      </ul>
+                    </li>
+                    <!-- basket icon from - https://www.vecteezy.com/png/19787018-shopping-cart-icon-shopping-basket-on-transparent-background-png -->
+                    <a {% if title == "Basket" %} class="active" {% else %} class="" {% endif %} href="/basket"><img src="{{url_for('static', filename='basket.png')}}" alt="Shopping basket image" class="imageResponsive navbarIcon"/>{{ numBasketItems }}</a>
+                    
+                  </div>
+              </div>
+          </div>
+      </nav>
+    </div>
+      
+  </header>
+  <body>
+    {% block content %}{% endblock %}
+  </body>
+
+</html>

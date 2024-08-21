@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- displays order -->
+<div class="tableContainer">
+    <h1>Your Orders</h1>
+    <!-- if no orders say no orders -->
+    {% if totalNumOrders == 0 %}
+        <h1>You have no orders</h1>
+    {% else %}
+    <!-- loops through all orders -->
+    {% for i in range(0, totalNumOrders) %}
+    <!-- table for orders -->
+    <h3>Order Number: {{ orders[orderRows[i]].orderID }}</h3>
+    <h3>Order Address: {{ orderAddresses[i][0] }} {{ orderAddresses[i][1] }}</h3>
+    <table class="tableStyling">
+    <thead>
+        <tr>
+        <th scope="col">Item Name</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Individual Item Cost</th>
+        <th scope="col">Total Cost</th>
+        </tr>
+    </thead>
+    <!-- loops through all items in order and creates the row -->
+    <tbody>
+        {% for j in range(orderRows[i], orderRows[i+1]) %}
+        <td>{{ orders[j].name }}</td>
+        <td>{{ orders[j].quantity }}</td>
+        <td>£{{ orders[j].cost }}</td>
+        <td>£{{ orders[j].totalOrderCost }}</td>
+        {% endfor %}
+    </tbody>
+    <thead>
+        <tr>
+            <th scope="col">Order Date: {{ orders[orderRows[i]].orderDate }}</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Individual Item Cost</th>
+            <th scope="col">Total Order Cost: £{{ totalOrderCosts[i] }}</th>
+        </tr>
+        </thead>
+    </table>
+    {% endfor %}
+
+    {% endif %}
+
+
+</div>
+
+
+
+{% endblock %}

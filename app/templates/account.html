@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- user account main page -->
+<div class="centeredContainer">
+    <h1>Your Account</h1>
+
+    <div class="row accountRow">
+        <div class="col-md accountCol">
+            <a href="/orders" class="button">Your Orders</a>
+        </div>
+
+        <div class="col-md accountCol">
+            <a href="/addresses" class="button">Manage Addresses</a>
+        </div>
+
+        <div class="col-md accountCol">
+            <a href="/changepass" class="button">Change Password</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

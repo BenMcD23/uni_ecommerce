@@ -1,0 +1,308 @@
+body {
+    font-family: Arial;
+    /* Allows the nav bar to fill whole screen */
+    padding: 0;
+    margin: 0;
+    /* Creates the gradient background */
+    background-repeat: no-repeat;
+    background: radial-gradient(#b7c0ce 20%, #94afda);
+
+    background-attachment: fixed;
+    
+    height: 100%;
+}
+
+/* Navbar styling */
+
+.topnav a {
+    float: left;
+    color: #000000;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* Hover effect */
+.topnav a:hover {
+    background-color: #ddd;
+    color: #000000;
+}
+
+/* Active link effect */
+.topnav a.active {
+    background-color: #D3D3D3;
+    color: #000000;
+}
+
+.navbarIcon {
+    width: 50px;
+    height: 50px;
+}
+
+
+/* buttons */
+.button, #submitCheckout, #submitSearch {
+    overflow: hidden;
+    width: 40%;
+    background-color: #ff6700;
+    color: #000000;
+    padding: 14px 0px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.checkout {
+    text-align: center;
+}
+
+.checkout a {
+    color: #000000;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* Hover effect */
+.checkout a:hover {
+    background-color: #ddd;
+    color: #000000;
+}
+
+/* Home page */
+
+.homeContainer {
+    width: 99%;
+    padding-top: 100px;
+}
+
+.homeText {
+    text-align: center;
+    display: flex;
+    justify-content: center; /* Align horizontal */
+    align-items: center;
+}
+
+.imageResponsive {
+    max-width: 100%;
+    height: auto;
+}
+
+/* products page */
+.productsContainer {
+    width: 99%;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.productsRow {
+    padding-bottom: 50px;
+}
+
+.productsImage {
+    width: 400px;
+    height: 400px;
+}
+/* forms */
+
+.form {
+    color: #000000;
+    margin: 0 auto;
+    width: 25%;
+}
+
+
+.form label {
+    padding-top: 20px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+#createAccount, #submitLogin, #submitAddress {
+    overflow: hidden;
+    width: 100%;
+    background-color: #ff6700;
+    color: #000000;
+    padding: 14px 0px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.formButton {
+    text-align: center;
+    padding-top: 20px;
+}
+
+/* singup and login */
+.accountCentered {
+    text-align: center;
+    padding-top: 100px;
+}
+
+
+/* important so overpowers bootstrap */
+.invalid-feedback {
+    font-size: 20px !important;
+    font-weight: 700 !important;
+}
+
+/* addresses page*/
+#editSubmitAddress, #editAddressCancel, #submitPass {
+    overflow: hidden;
+    width: 49%;
+    background-color: #ff6700;
+    color: #000000;
+    padding: 14px 0px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+#editAddressForm {
+    display: none;
+}
+
+#addAddressForm h1{
+    text-align: center;
+}
+
+
+/* table styling */
+.tableStyling {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    table-layout: fixed;
+    word-wrap:break-word;
+    text-align: center;
+    table-layout:fixed;
+    width: 100%;
+}
+  
+  
+.tableStyling tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.tableStyling tr:hover {
+    color: #ffffff;
+    background-color: #ff6700;
+}
+
+.tableStyling th {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.tableStyling th, .tableStyling td {
+    padding: 12px 15px;
+}
+
+.tableContainer {
+    clear: both;
+    margin: auto;
+    padding-top: 20px;
+    width: 80%;
+    font-size: 20px;
+    font-weight: 550;
+    overflow: auto;
+}
+
+.tableContainer h1 {
+    text-align: center;
+}
+
+.tableButton {
+    width: 50%;
+    height: 30px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.centeredContainer {
+    text-align: center;
+}
+
+/* account management page*/
+.accountCol {
+    padding-top: 50px;
+}
+
+.accountCol a {
+    color: #000000;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* Hover effect */
+.accountCol a:hover {
+    background-color: #ddd;
+    color: #000000;
+}
+
+/* media queries */
+/* mobile */
+@media (max-width: 480px) {
+    .form {
+        width: 90%;
+    }
+
+    .tableContainer {
+        width: 100%;
+    }
+}
+
+  /* tablet */
+@media (min-width: 481px) and (max-width: 767px) {
+    .form {
+        width: 75%;
+    }
+
+    .tableContainer {
+        width: 100%; 
+    }
+}
+
+
+/* small screens / laptops */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .form {
+        width: 50%;
+    }
+
+    .tableContainer {
+        width: 100%;
+    }
+}
+
+/* medium screens */
+@media (min-width: 1025px) and (max-width: 1580px) {
+    .form {
+        width: 40%;
+    }
+}
+    
